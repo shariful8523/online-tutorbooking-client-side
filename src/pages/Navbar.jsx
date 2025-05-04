@@ -1,4 +1,7 @@
 import { NavLink } from "react-router-dom";
+import logo from '../assets/logoss.svg'
+
+
 
 const Navbar = () => {
 
@@ -8,16 +11,14 @@ const Navbar = () => {
         <li>  <NavLink> Add Tutorials</NavLink>   </li>
         <li>  <NavLink> My Tutorials</NavLink>  </li>
         <li>  <NavLink> My booked tutors</NavLink> </li>
-
-        
-     
-       
-        
-        
+ 
     </>
+
+
+
     return (
-        <div className="w-full bg-transparent  sticky top-0 z-50 shadow-sm  ">
-            <div className=" navbar  w-10/12 mx-auto justify-center">
+        <div className="w-full  bg-base-200 sticky top-0 z-50 shadow-sm  ">
+            <div className=" navbar  w-9/12 mx-auto justify-center">
                 <div className="navbar-start ">
                     <div className="dropdown">
                         <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -29,7 +30,7 @@ const Navbar = () => {
                             {link}
                         </ul>
                     </div>
-                    <a className="btn btn-ghost text-xl">daisyUI</a>
+                   <img className=" w-40" src={logo} alt="" />
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
