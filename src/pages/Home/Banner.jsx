@@ -1,12 +1,16 @@
 import { FaStar } from 'react-icons/fa6';
 import BgImage from '../../assets/banner.webp'
 import photo from '../../assets/object.webp'
+import penciling from '../../assets/pencile.png'
+import second from '../../assets/man-1.png'
+import third from '../../assets/man-2.png'
+import certificate from '../../assets/certificate.png'
 import { MdSearch } from 'react-icons/md';
 import { FaArrowCircleRight } from 'react-icons/fa';
 
 const Banner = () => {
     return (
-        <div className="h-[800px] w-full bg-cover bg-center  "
+        <div className="h-[800px] w-full bg-cover bg-center  relative "
             style={{ backgroundImage: `url(${BgImage})` }}>
 
 
@@ -29,7 +33,7 @@ const Banner = () => {
                             />
 
                             <span className='text-3xl text-amber-400'>
-                            <FaArrowCircleRight />
+                                <FaArrowCircleRight />
 
                             </span>
                         </fieldset>
@@ -40,24 +44,73 @@ const Banner = () => {
                     <p className=' text-3xl font-medium mt-12'>Trusted by over 15K Users <br /> worldwide since 2022</p>
 
                     <p className=' text-5xl font-bold flex gap-4 mt-10'>0+    4.5
-                         <span className='text-red-600 text-2xl  flex items-center gap-5'>
-                            
-                             <FaStar /> 
-                             <FaStar /> 
-                             <FaStar /> 
-                             <FaStar /> 
-                         
-                         
-                         </span> </p>
+                        <span className='text-red-600 text-2xl  flex items-center gap-5'>
+
+                            <FaStar />
+                            <FaStar />
+                            <FaStar />
+                            <FaStar />
+
+
+                        </span> </p>
 
                 </div>
 
                 {/* Image section  */}
                 <div className='w-[400px] mt-25'>
-                     <img src={photo} alt="" />
+                    <img src={photo} alt="" />
                 </div>
 
 
+
+            </div>
+
+
+            <div className="w-12/12 flex mx-auto justify-center gap-10 absolute -mt-20">
+
+                {/* Card 1 */}
+                <div className="w-64 p-6 rounded-2xl flex items-center gap-5 bg-white border border-amber-100 shadow-md">
+                    <div className="w-16 h-16 rounded-2xl overflow-hidden flex items-center justify-center bg-amber-50">
+                        <img className="w-full h-full object-contain" src={penciling} alt="" />
+                    </div>
+                    <div>
+                        <h1 className="text-4xl font-bold">6K</h1>
+                        <p className="text-xl">Online Courses</p>
+                    </div>
+                </div>
+
+                {/* Card 2 */}
+                <div className="w-64 p-6 rounded-2xl flex items-center gap-5 bg-white border border-amber-100 shadow-md">
+                    <div className="w-16 h-16 rounded-2xl overflow-hidden flex items-center justify-center bg-amber-50">
+                        <img className="w-full h-full object-contain" src={second} alt="" />
+                    </div>
+                    <div>
+                        <h1 className="text-4xl font-bold">126+</h1>
+                        <p className="text-xl">Expert Tutors</p>
+                    </div>
+                </div>
+
+                {/* Card 3 */}
+                <div className="w-64 p-6 rounded-2xl flex items-center gap-5 bg-white border border-amber-100 shadow-md">
+                    <div className="w-16 h-16 rounded-2xl overflow-hidden flex items-center justify-center bg-amber-50">
+                        <img className="w-full h-full object-contain" src={third} alt="" />
+                    </div>
+                    <div>
+                        <h1 className="text-4xl font-bold">3K+</h1>
+                        <p className="text-xl">Ceritified Courses</p>
+                    </div>
+                </div>
+
+                {/* Card 4 */}
+                <div className="w-64 p-6 rounded-2xl flex items-center gap-5 bg-white border border-amber-100 shadow-md">
+                    <div className="w-16 h-16 rounded-2xl overflow-hidden flex items-center justify-center bg-amber-50">
+                        <img className="w-full h-full object-contain" src={certificate} alt="" />
+                    </div>
+                    <div>
+                        <h1 className="text-4xl font-bold">37K+</h1>
+                        <p className="text-xl">Online Students</p>
+                    </div>
+                </div>
 
             </div>
 
