@@ -40,7 +40,7 @@ const Navbar = () => {
 
                 {/* Button */}
                 <div className="">
-                    <a className="btn btn-primary">Get Started</a>
+                    <NavLink to={'/register'} className="btn btn-primary">Register</NavLink>
                 </div>
             </div>
         </div>

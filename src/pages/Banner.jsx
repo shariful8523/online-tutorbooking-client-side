@@ -7,6 +7,11 @@ import third from '../assets/man-2.png';
 import certificate from '../assets/certificate.png';
 import { MdSearch } from 'react-icons/md';
 import { FaArrowCircleRight } from 'react-icons/fa';
+import CountUp from 'react-countup';
+
+
+
+
 
 const Banner = () => {
     return (
@@ -43,7 +48,10 @@ const Banner = () => {
                     <p className='text-xl lg:text-3xl font-medium mt-8 lg:mt-12'>Trusted by over 15K Users <br /> worldwide since 2022</p>
 
                     <p className='text-2xl lg:text-5xl font-bold flex items-center justify-center lg:justify-start gap-4 mt-6 lg:mt-10'>
-                    290+ 4.5
+                     <CountUp 
+                            end={290}
+                            duration={4}
+                     /> + 4.5
                         <span className='text-red-600 text-xl lg:text-2xl flex items-center gap-2 lg:gap-5'>
                             <FaStar />
                             <FaStar />
@@ -63,45 +71,57 @@ const Banner = () => {
             <div className="w-10/12 mx-auto flex flex-col lg:flex-row items-center justify-center gap-5 lg:gap-10 mt-10 lg:mt-25">
 
                 {/* Card 1 */}
-                <div className="w-64 p-7 rounded-2xl flex items-center gap-5 bg-white border border-amber-100 shadow-md">
+                <div className="w-64 p-7 rounded-2xl flex items-center gap-5 bg-white border border-amber-100 shadow-md hover:-translate-y-2 hover:scale-105">
                     <div className="w-16 h-16 rounded-2xl overflow-hidden flex items-center justify-center bg-amber-50">
                         <img className="w-full h-full object-contain" src={penciling} alt="" />
                     </div>
                     <div>
-                        <h1 className="text-3xl lg:text-4xl font-bold">6K</h1>
+                        <h1 className="text-3xl lg:text-4xl font-bold"><CountUp 
+                            end={10}
+                            duration={7}
+                     />  K</h1>
                         <p className="text-lg lg:text-xl">Online Courses</p>
                     </div>
                 </div>
 
                 {/* Card 2 */}
-                <div className="w-64 p-7 rounded-2xl flex items-center gap-5 bg-white border border-amber-100 shadow-md">
+                <div className="w-64 p-7 rounded-2xl flex items-center gap-5 bg-white border border-amber-100 shadow-md hover:-translate-y-2 hover:scale-105">
                     <div className="w-16 h-16 rounded-2xl overflow-hidden flex items-center justify-center bg-amber-50">
                         <img className="w-full h-full object-contain" src={second} alt="" />
                     </div>
                     <div>
-                        <h1 className="text-3xl lg:text-4xl font-bold">126+</h1>
+                        <h1 className="text-3xl lg:text-4xl font-bold"><CountUp 
+                            end={126}
+                            duration={7}
+                     />+</h1>
                         <p className="text-lg lg:text-xl">Expert Tutors</p>
                     </div>
                 </div>
 
                 {/* Card 3 */}
-                <div className="w-64 p-7 rounded-2xl flex items-center gap-5 bg-white border border-amber-100 shadow-md">
+                <div className="w-64 p-7 rounded-2xl flex items-center gap-5 bg-white border border-amber-100 shadow-md  hover:-translate-y-2 hover:scale-105">
                     <div className="w-16 h-16 rounded-2xl overflow-hidden flex items-center justify-center bg-amber-50">
                         <img className="w-full h-full object-contain" src={certificate} alt="" />
                     </div>
                     <div>
-                        <h1 className="text-3xl lg:text-4xl font-bold">3K+</h1>
+                        <h1 className="text-3xl lg:text-4xl font-bold"><CountUp 
+                            end={5}
+                            duration={7}
+                     /> K+</h1>
                         <p className="text-lg lg:text-xl">Certified Courses</p>
                     </div>
                 </div>
 
                 {/* Card 4 */}
-                <div className="w-64 p-7 rounded-2xl flex items-center gap-5 bg-white border border-amber-100 shadow-md">
+                <div className="w-64 p-7 rounded-2xl flex items-center gap-5 bg-white border border-amber-100 shadow-md hover:-translate-y-2 hover:scale-105">
                     <div className="w-16 h-16 rounded-2xl overflow-hidden flex items-center justify-center bg-amber-50">
                         <img className="w-full h-full object-contain" src={third} alt="" />
                     </div>
                     <div>
-                        <h1 className="text-3xl lg:text-4xl font-bold">37K+</h1>
+                        <h1 className="text-3xl lg:text-4xl font-bold"><CountUp 
+                            end={37}
+                            duration={7}
+                     />K+</h1>
                         <p className="text-lg lg:text-xl">Online Students</p>
                     </div>
                 </div>
