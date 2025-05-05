@@ -39,7 +39,8 @@ const Navbar = () => {
                 </div>
 
                 {/* Button */}
-                <div className="">
+                <div className=" space-x-5 ">
+                    <NavLink to={'/login'} className="btn btn-primary">Login</NavLink>
                     <NavLink to={'/register'} className="btn btn-primary">Register</NavLink>
                 </div>
             </div>
