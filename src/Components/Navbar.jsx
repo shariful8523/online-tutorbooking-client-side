@@ -7,16 +7,16 @@ import AuthContext from "../Providers/AuthContext";
 const Navbar = () => {
     const { user, LogOut } = useContext(AuthContext);
 
-   
 
-    const handelLogOut =() => {
+
+    const handelLogOut = () => {
         LogOut()
-        .then (() => {
-            
-        })
-        .catch(()=> {
+            .then(() => {
 
-        })
+            })
+            .catch(() => {
+
+            })
     }
 
     const link = <>
@@ -60,10 +60,19 @@ const Navbar = () => {
                     {
                         user ?
                             (<div className="flex items-center gap-3">
+
+                                <div className="dropdown hidden md:block">
+                                    <div tabIndex={0}  >
+                                        <img className='md:w-12 w-8  rounded-full' referrerPolicy='no-referrer' src={user.photoURL} alt="" />
+                                    </div>
+                                    <ul tabIndex={0} className="dropdown-content menu bg-green-500 rounded-box z-[1] w-24 md:w-48 mt-1  p-2 shadow">
+                                        <li className='md:p-2 text-white md:text-xl md:font-medium'>{user.displayName}</li>
+                                    </ul>
+                                </div>
                                 {/* User Name */}
                                 <span className=" hidden  md:block  lg:block  font-semibold text-gray-700">{user.displayName || 'User'}</span>
                                 {/* Logout button */}
-                                <button  onClick={handelLogOut} className="btn btn-sm btn-error">Logout</button>
+                                <button onClick={handelLogOut} className="btn btn-sm btn-error">Logout</button>
                             </div>)
 
                             :

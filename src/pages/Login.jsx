@@ -10,7 +10,7 @@ const Login = () => {
       const navigate = useNavigate();
     
 
-    const { logInUser } = useContext(AuthContext);
+    const { logInUser, GoogleLogin } = useContext(AuthContext);
 
     const handellogin = (event) => {
         event.preventDefault();
@@ -42,6 +42,17 @@ const Login = () => {
                 });
             });
     }
+
+    const handelGoogle =() =>{
+       
+        GoogleLogin()
+        .then((result)=>{
+           console.log(result)
+        })
+        .catch((error )=>{
+                console.log(error)
+        })
+    }
     
     return (
         <div className="flex justify-center items-center min-h-screen bg-gray-100 px-4 lg:-mt-40">
@@ -66,7 +77,7 @@ const Login = () => {
                     <div className="flex-grow h-px bg-gray-300"></div>
                 </div>
 
-                <button type="button" className="flex items-center justify-center gap-3 w-full border border-gray-400 py-2 rounded-md hover:bg-gray-100 transition">
+                <button onClick={handelGoogle} type="button" className="flex items-center justify-center gap-3 w-full border border-gray-400 py-2 rounded-md hover:bg-gray-100 transition">
                     <FcGoogle size={24} /> Continue with Google
                 </button>
 
