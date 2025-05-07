@@ -22,7 +22,7 @@ const Navbar = () => {
     const link = <>
         <li> <NavLink to="/"> Home </NavLink> </li>
         <li> <NavLink to="/find-tutors"> Find tutors</NavLink> </li>
-        <li> <NavLink to="/add-tutorials"> Add Tutorials</NavLink> </li>
+        <li> <NavLink to="/addTutorials"> Add Tutorials</NavLink> </li>
         <li> <NavLink to="/my-tutorials"> My Tutorials</NavLink> </li>
         <li> <NavLink to="/booked-tutors"> My booked tutors</NavLink> </li>
     </>
@@ -70,7 +70,7 @@ const Navbar = () => {
                                     </ul>
                                 </div>
                                 {/* User Name */}
-                                <span className=" hidden  md:block  lg:block  font-semibold text-gray-700">{user.displayName || 'User'}</span>
+                                {/* <span className=" hidden  md:block  lg:block  font-semibold text-gray-700">{user.displayName || 'User'}</span> */}
                                 {/* Logout button */}
                                 <button onClick={handelLogOut} className="btn btn-sm btn-error">Logout</button>
                             </div>)
