@@ -2,12 +2,14 @@ import { useContext } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { Link } from "react-router-dom";
 import AuthContext from "../Providers/AuthContext";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Register = () => {
 
-    const {CreateUser} = useContext(AuthContext);
+    const { CreateUser } = useContext(AuthContext);
 
-    const handelRegister = (event) =>{
+    const handelRegister = (event) => {
 
         event.preventDefault();
 
@@ -15,16 +17,22 @@ const Register = () => {
         const photo = event.target.photo.value;
         const email = event.target.email.value;
         const password = event.target.password.value;
-       
+
         console.log(name, photo, email, password)
 
         CreateUser(email, password)
-        .then((result) => {
-            console.log(result)
-        })
-        .catch((error) => {
-            console.log(error.message)
-        })
+            .then((result) => {
+                console.log(result)
+                toast.success("Register Successful ", {
+                    position: "top-center"
+                });
+            })
+            .catch((error) => {
+                console.log(error.message)
+                toast.error("Register Failed!", {
+                    position: "top-center"
+                });
+            })
 
 
     }
@@ -121,6 +129,8 @@ const Register = () => {
                     </Link>
                 </p>
             </form>
+            <ToastContainer />
+
         </div>
     );
 };

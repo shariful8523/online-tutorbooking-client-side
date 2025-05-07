@@ -1,7 +1,23 @@
 import { NavLink } from "react-router-dom";
 import logo from '../assets/logoss.svg'
+import { useContext } from "react";
+import AuthContext from "../Providers/AuthContext";
+
 
 const Navbar = () => {
+    const { user, LogOut } = useContext(AuthContext);
+
+   
+
+    const handelLogOut =() => {
+        LogOut()
+        .then (() => {
+            
+        })
+        .catch(()=> {
+
+        })
+    }
 
     const link = <>
         <li> <NavLink to="/"> Home </NavLink> </li>
@@ -40,8 +56,24 @@ const Navbar = () => {
 
                 {/* Button */}
                 <div className=" space-x-5 ">
-                    <NavLink to={'/login'} className="btn btn-primary">Login</NavLink>
-                    <NavLink to={'/register'} className="btn btn-primary">Register</NavLink>
+
+                    {
+                        user ?
+                            (<div className="flex items-center gap-3">
+                                {/* User Name */}
+                                <span className=" hidden  md:block  lg:block  font-semibold text-gray-700">{user.displayName || 'User'}</span>
+                                {/* Logout button */}
+                                <button  onClick={handelLogOut} className="btn btn-sm btn-error">Logout</button>
+                            </div>)
+
+                            :
+
+                            (<>
+                                <NavLink to={'/login'} className="btn btn-primary">Login</NavLink>
+                                <NavLink to={'/register'} className="btn btn-primary">Register</NavLink>
+                            </>)
+                    }
+
                 </div>
             </div>
         </div>

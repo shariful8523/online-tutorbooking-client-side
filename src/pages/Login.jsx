@@ -1,28 +1,48 @@
-import React, {  useContext } from 'react';
+import React, { useContext } from 'react';
 import { FcGoogle } from 'react-icons/fc';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import AuthContext from '../Providers/AuthContext';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 
 const Login = () => {
+      const navigate = useNavigate();
+    
 
-    const {logInUser} = useContext(AuthContext);
+    const { logInUser } = useContext(AuthContext);
 
-    const handellogin=(event)=> {
+    const handellogin = (event) => {
         event.preventDefault();
         const email = event.target.email.value;
         const password = event.target.password.value;
-
-        console.log(email, password)
-           
+    
+        console.log(email, password);
+    
         logInUser(email, password)
-        .then((result) => {
-            console.log(result)
-        })
-        .catch((error) =>{
-            console.log(error.massage)
-        })
+            .then((result) => {
+                console.log(result);
+            
+                toast.success("Login Successful ", {
+                    position: "top-center",
+                    autoClose: 3000,
+                    pauseOnHover: true
+                });
+                
 
+               
+                     navigate('/')
+                
+               
+            })
+            .catch((error) => {
+                console.log(error.message); 
+                toast.error("Login Failed!", {
+                    position: "top-center"
+                });
+            });
     }
+    
     return (
         <div className="flex justify-center items-center min-h-screen bg-gray-100 px-4 lg:-mt-40">
             <form onSubmit={handellogin} className="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
@@ -46,7 +66,7 @@ const Login = () => {
                     <div className="flex-grow h-px bg-gray-300"></div>
                 </div>
 
-                <button type="button"  className="flex items-center justify-center gap-3 w-full border border-gray-400 py-2 rounded-md hover:bg-gray-100 transition">
+                <button type="button" className="flex items-center justify-center gap-3 w-full border border-gray-400 py-2 rounded-md hover:bg-gray-100 transition">
                     <FcGoogle size={24} /> Continue with Google
                 </button>
 
@@ -57,6 +77,7 @@ const Login = () => {
                     </Link>
                 </p>
             </form>
+            <ToastContainer />
         </div>
     );
 };
