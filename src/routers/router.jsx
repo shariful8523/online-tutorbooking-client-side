@@ -7,6 +7,7 @@ import Register from "../pages/Register";
 import Login from "../pages/Login";
 import AddTutorials from "../pages/AddTutorials";
 import ViewCategory from "../pages/ViewCategory";
+import ViewDetails from "../pages/ViewDetails";
 
 
 const router = createBrowserRouter([
@@ -28,9 +29,11 @@ const router = createBrowserRouter([
         },
         
         {
-           path: " ",
-           element: <h1></h1> ,
+          path: "/viewDetails/:id",
+          element: <ViewDetails></ViewDetails>,
+          loader: ({params}) => fetch(`http://localhost:5000/tutor/${params.id}`)
         },
+        
         {
            path: " ",
            element: <h1></h1> ,

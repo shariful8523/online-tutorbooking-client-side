@@ -1,6 +1,6 @@
 import React from 'react';
 import { FaArrowRight } from "react-icons/fa";
-import { useNavigate } from 'react-router-dom'; // ✅ navigate import করলাম
+import { useNavigate } from 'react-router-dom'; 
 
 import England from '../assets/england.jpg';
 import portugal from '../assets/portugal.png';
@@ -40,16 +40,16 @@ const CategoryCard = () => {
 
 // Reusable Card component
 const Card = ({ img, title }) => {
-    const navigate = useNavigate(); // ✅ navigate টা এখানে ব্যবহার করলাম
+    const navigate = useNavigate(); 
 
     const handleClick = () => {
-        const language = title.split(" ")[0]; // "English Tutors" থেকে শুধু "English" টা নিলাম
-        navigate(`/findTutors/${language}`); // ✅ এই রাউটে পাঠাচ্ছি
+        const language = title.split(" ")[0]; 
+        navigate(`/findTutors/${language}`);
     }
 
     return (
         <div 
-            onClick={handleClick} // ✅ এই div টাতে click করলে route change হবে
+            onClick={handleClick} 
             className='flex gap-5 items-center p-5 border border-red-200 hover:shadow-lg transition cursor-pointer'
         >
             <img className='w-20' src={img} alt={title} />

@@ -1,18 +1,18 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 const ViewCategory = () => {
     const { language } = useParams();
     const [tutors, setTutors] = useState([]);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/tutors/${language}`)
+        fetch(`http://localhost:5000/tutors/language/${language}`)
             .then(res => res.json())
             .then(data => setTutors(data));
     }, [language]);
 
     return (
-        <div className='w-10/12 mx-auto mt-20'>
+        <div className='w-8/12 mx-auto mt-20 mb-20'>
             <h2 className='text-4xl font-bold mb-10 text-center'>All {language} Tutors</h2>
 
             {
@@ -57,10 +57,12 @@ const ViewCategory = () => {
                                                     <h1 className="font-semibold text-indigo-600">Price: ${price}</h1>
                                                 </div>
                                             </div>
-
-                                            <button className="w-full border-2 border-indigo-500 text-indigo-500 font-semibold py-2 rounded-full hover:bg-indigo-500 hover:text-white transition">
+                                                
+                                            <Link to={`/viewDetails/${_id}`}
+                                             
+                                            className="w-full border-2 border-indigo-500 text-indigo-500 font-semibold py-2 rounded-full hover:bg-indigo-500 hover:text-white transition">
                                                 Details
-                                            </button>
+                                            </Link>
                                         </div>
                                     </div>
                                 )
