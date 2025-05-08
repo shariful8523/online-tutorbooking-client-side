@@ -1,22 +1,60 @@
 import React from 'react';
 import { FaArrowRight } from "react-icons/fa";
+import { useNavigate } from 'react-router-dom'; // ✅ navigate import করলাম
 
+import England from '../assets/england.jpg';
+import portugal from '../assets/portugal.png';
+import japan from '../assets/FJapan.svg.png';
+import china from '../assets/china.webp';
+import Arabic from '../assets/Saudi-Arabia.webp';
+import spanish from '../assets/spanish.png';
+import italic from '../assets/itali.webp';
+import german from '../assets/Germany.svg.png';
+import france from '../assets/franch.webp';
 
 
 const CategoryCard = () => {
+
     return (
         <div className='mt-40 w-10/12 mx-auto'>
 
             <p className='text-5xl font-bold mb-20 text-center'>All Categories</p>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-20">
 
-                
-                
-            
+                <Card img={England} title="English Tutors" />
+                <Card img={portugal} title="Portuguese Tutors" />
+                <Card img={japan} title="Japanese Tutors" />
+                <Card img={Arabic} title="Arabic Tutors" />
+                <Card img={german} title="German Tutors" />
+                <Card img={china} title="Chinese Tutors" />
+                <Card img={italic} title="Italian Tutors" />
+                <Card img={spanish} title="Spanish Tutors" />
+                <Card img={france} title="French Tutors" />
 
             </div>
 
+        </div>
+    );
+};
+
+// Reusable Card component
+const Card = ({ img, title }) => {
+    const navigate = useNavigate(); // ✅ navigate টা এখানে ব্যবহার করলাম
+
+    const handleClick = () => {
+        const language = title.split(" ")[0]; // "English Tutors" থেকে শুধু "English" টা নিলাম
+        navigate(`/findTutors/${language}`); // ✅ এই রাউটে পাঠাচ্ছি
+    }
+
+    return (
+        <div 
+            onClick={handleClick} // ✅ এই div টাতে click করলে route change হবে
+            className='flex gap-5 items-center p-5 border border-red-200 hover:shadow-lg transition cursor-pointer'
+        >
+            <img className='w-20' src={img} alt={title} />
+            <h1 className='text-2xl font-bold flex-1'>{title}</h1>
+            <span className='text-4xl text-red-400 '> <FaArrowRight /> </span>
         </div>
     );
 };

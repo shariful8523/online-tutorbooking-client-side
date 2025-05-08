@@ -6,6 +6,7 @@ import Home from "../pages/Home/Home";
 import Register from "../pages/Register";
 import Login from "../pages/Login";
 import AddTutorials from "../pages/AddTutorials";
+import ViewCategory from "../pages/ViewCategory";
 
 
 const router = createBrowserRouter([
@@ -22,9 +23,10 @@ const router = createBrowserRouter([
            element: <AddTutorials></AddTutorials> ,
         },
         {
-           path: " ",
-           element: <h1></h1> ,
+          path: "/findTutors/:language",
+          element: <ViewCategory></ViewCategory> ,
         },
+        
         {
            path: " ",
            element: <h1></h1> ,
