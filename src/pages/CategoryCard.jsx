@@ -44,7 +44,7 @@ const Card = ({ img, title }) => {
 
     const handleClick = () => {
         const language = title.split(" ")[0]; 
-        navigate(`/findTutors/${language}`);
+        navigate(`/Tutors/${language}`);
     }
 
     return (

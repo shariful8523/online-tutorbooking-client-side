@@ -11,7 +11,7 @@ const ViewDetails = () => {
     return (
 
         <div className='w-7/12 mx-auto justify-center mt-20 mb-20'>
-            <div className='  flex '>
+            <div className='  flex border  border-amber-50 bg-base-300 ' >
 
                 <div>
                     <img className='w-[500px]' src={image} alt="" />
