@@ -16,7 +16,7 @@ const AddTutorials = () => {
         console.log(initialData)
        
 
-        fetch('http://localhost:5000/tutors', {
+        fetch('http://localhost:5000/tutor', {
            
             method: "POST",
             headers:{

@@ -6,7 +6,7 @@ const ViewCategory = () => {
     const [tutors, setTutors] = useState([]);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/tutors/language/${language}`)
+        fetch(`http://localhost:5000/tutor/language/${language}`)
             .then(res => res.json())
             .then(data => setTutors(data));
     }, [language]);
@@ -50,7 +50,7 @@ const ViewCategory = () => {
                                                 {description?.slice(0, 40) || 'Tutorial'}...
                                             </h3>
 
-                                            <div className="flex gap-1 text-base items-center">
+                                            <div className="flex gap-1 text-base items-center mb-5">
                                                 {'⭐'.repeat(Math.floor(review || 0))}
                                                 {'☆'.repeat(5 - Math.floor(review || 0))}
                                                 <div className='ml-auto'>
@@ -58,9 +58,12 @@ const ViewCategory = () => {
                                                 </div>
                                             </div>
                                                 
-                                            <Link to={`/viewDetails/${_id}`}
+                                            <Link
+                                            
+                                             className="border-2 p-5  border-indigo-500 text-indigo-500 font-semibold py-2 rounded-full hover:bg-indigo-500 hover:text-white transition" 
+                                            to={`/viewDetails/${_id}`}
                                              
-                                            className="w-full border-2 border-indigo-500 text-indigo-500 font-semibold py-2 rounded-full hover:bg-indigo-500 hover:text-white transition">
+                                           > 
                                                 Details
                                             </Link>
                                         </div>
