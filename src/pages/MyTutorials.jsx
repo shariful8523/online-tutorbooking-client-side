@@ -102,12 +102,12 @@ const MyTutorials = () => {
                                     </div>
 
                                     <div className="flex gap-2">
-                                        <Link to={`/update/${_id}`}>
-                                            <button className="w-full border-2 border-indigo-500 text-indigo-500 font-semibold py-2 rounded-full hover:bg-indigo-500 hover:text-white transition">
+                                        
+                                            <Link to={`/update/${_id}`} className=" w-full text-center border-2 border-indigo-500 text-indigo-500 font-semibold py-2 rounded-full hover:bg-indigo-500 hover:text-white transition">
                                                 Update
-                                            </button>
+                                            </Link>
 
-                                        </Link>
+                                        
                                         <button
                                             onClick={() => handleDelete(_id)}
                                             className="w-full border-2 border-green-500 text-green-500 font-semibold py-2 rounded-full hover:bg-green-500 hover:text-white transition"

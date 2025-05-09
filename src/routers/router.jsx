@@ -11,6 +11,7 @@ import ViewDetails from "../pages/ViewDetails";
 import FindTutors from "../pages/FindTutors";
 import MyTutorials from "../pages/MyTutorials";
 import UpdateTutorials from "../pages/UpdateTutorials";
+import PrivateRouter from "../LayOuts/PrivateRouter";
 
 
 const router = createBrowserRouter([
@@ -24,26 +25,28 @@ const router = createBrowserRouter([
       },
       {
         path: "/addTutorials",
-        element: <AddTutorials></AddTutorials>,
+        element: <PrivateRouter>
+          <AddTutorials></AddTutorials>
+        </PrivateRouter>,
       },
       {
         path: "/Tutors/:language",
-        element: <ViewCategory></ViewCategory>,
+        element: <PrivateRouter> <ViewCategory></ViewCategory> </PrivateRouter>  ,
       },
 
       {
         path: "/viewDetails/:id",
-        element: <ViewDetails></ViewDetails>,
+        element: <PrivateRouter><ViewDetails></ViewDetails></PrivateRouter>  ,
         loader: ({ params }) => fetch(`http://localhost:5000/tutor/${params.id}`)
       },
 
       {
         path: "/findTutors",
-        element: <FindTutors></FindTutors>,
+        element: <PrivateRouter><FindTutors></FindTutors></PrivateRouter>  ,
       },
       {
         path: "/myTutorials",
-        element: <MyTutorials></MyTutorials>,
+        element: <PrivateRouter> <MyTutorials></MyTutorials> </PrivateRouter> ,
       },
       {
         path: "/bookedTutors",
@@ -51,8 +54,8 @@ const router = createBrowserRouter([
       },
       {
         path: "/update/:id",
-        element: <UpdateTutorials></UpdateTutorials>,
-        loader: ({params}) => fetch(`http://localhost:5000/tutor/${params.id}`)
+        element: <PrivateRouter><UpdateTutorials></UpdateTutorials></PrivateRouter> ,
+        loader: ({ params }) => fetch(`http://localhost:5000/tutor/${params.id}`)
 
       },
 
