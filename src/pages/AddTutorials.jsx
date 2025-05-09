@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 
 import BgImage2 from '../assets/banner.webp'
 import AuthContext from '../Providers/AuthContext';
+import Swal from 'sweetalert2';
 
 const AddTutorials = () => {
     const { user } = useContext(AuthContext)
@@ -14,21 +15,28 @@ const AddTutorials = () => {
 
         const initialData = Object.fromEntries(formdata.entries());
         console.log(initialData)
-       
+
 
         fetch('http://localhost:5000/tutor', {
-           
+
             method: "POST",
-            headers:{
-                "content-type":"application/json",
+            headers: {
+                "content-type": "application/json",
             },
             body: JSON.stringify(initialData)
         })
 
-        .then(res => res.json())
-        .then(data => {
-            console.log(data)
-        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.insertedId) {
+                    Swal.fire({
+                        title: 'Success!',
+                        text: 'Tutor Added Successfully',
+                        icon: 'success',
+                        confirmButtonText: 'Cool'
+                    })
+                }
+            })
 
 
         e.target.reset();
@@ -48,16 +56,16 @@ const AddTutorials = () => {
 
                 <form onSubmit={handelAddTutorials} className='grid grid-cols-1 md:grid-cols-2 gap-8'>
 
-                   
+
                     <input type="email" name='userEmail' value={user?.email} readOnly className=" input input-bordered w-full text-lg p-4" placeholder="User Email" />
 
-                  
+
                     <input type="text" name='userName' value={user?.displayName} readOnly className="input input-bordered w-full text-lg p-4" placeholder="User Name" />
 
-                 
+
                     <div className="form-control w-full">
                         <label className="label">
-                            <span className="label-text text-lg font-semibold">Language</span>
+                            
                         </label>
                         <select name='language' defaultValue="default" className="select select-bordered w-full" required>
                             <option disabled value="default">Select A Language</option>
@@ -73,19 +81,19 @@ const AddTutorials = () => {
                         </select>
                     </div>
 
-                   
+
                     <input type="text" name="image" className="input input-bordered w-full text-lg p-4" placeholder="Image URL" />
 
-                
+
                     <input type="number" name="price" className="input input-bordered w-full text-lg p-4" placeholder="Price" />
 
-              
+
                     <input type="number" name="review" min={0} max={5} step="0.1" className="input input-bordered w-full text-lg p-4" placeholder="Review (0 to 5)" />
 
-         
+
                     <textarea name="description" className="textarea textarea-bordered w-full text-lg p-4 md:col-span-2" rows="4" placeholder="Description"></textarea>
 
-                 
+
                     <div className="flex justify-center mt-10 md:col-span-2">
                         <button type="submit" className='btn btn-lg btn-warning px-10 text-lg'>Submit</button>
                     </div>

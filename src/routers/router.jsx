@@ -10,6 +10,7 @@ import ViewCategory from "../pages/ViewCategory";
 import ViewDetails from "../pages/ViewDetails";
 import FindTutors from "../pages/FindTutors";
 import MyTutorials from "../pages/MyTutorials";
+import UpdateTutorials from "../pages/UpdateTutorials";
 
 
 const router = createBrowserRouter([
@@ -47,6 +48,12 @@ const router = createBrowserRouter([
       {
         path: "/bookedTutors",
         element: <h1></h1>,
+      },
+      {
+        path: "/update/:id",
+        element: <UpdateTutorials></UpdateTutorials>,
+        loader: ({params}) => fetch(`http://localhost:5000/tutor/${params.id}`)
+
       },
 
       {
