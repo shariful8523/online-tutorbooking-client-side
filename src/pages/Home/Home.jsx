@@ -2,6 +2,7 @@ import AllTutors from "../AllTutors";
 import Banner from "../Banner";
 import CategoryCard from "../CategoryCard";
 
+
 const Home = () => {
     return (
         <div>
@@ -11,9 +12,9 @@ const Home = () => {
                 <CategoryCard></CategoryCard>
             </section>
 
-            {/* <section className=" ">
-                <AllTutors></AllTutors>
-            </section> */}
+            <section className=" w-7/12 mx-auto justify-center ">
+                
+            </section>
 
         </div>
     );

@@ -10,6 +10,7 @@ import ViewCategory from "../pages/ViewCategory";
 import ViewDetails from "../pages/ViewDetails";
 import FindTutors from "../pages/FindTutors";
 import MyTutorials from "../pages/MyTutorials";
+import MyBookedTutorial from "../pages/MyBookedTutorial";
 import UpdateTutorials from "../pages/UpdateTutorials";
 import PrivateRouter from "../LayOuts/PrivateRouter";
 
@@ -50,7 +51,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/bookedTutors",
-        element: <h1></h1>,
+        element: <MyBookedTutorial></MyBookedTutorial> ,
       },
       {
         path: "/update/:id",

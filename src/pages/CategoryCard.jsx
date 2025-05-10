@@ -16,7 +16,7 @@ import france from '../assets/franch.webp';
 const CategoryCard = () => {
 
     return (
-        <div className='mt-40 w-10/12 mx-auto'>
+        <div className='mt-40 w-11/12 mx-auto'>
 
             <p className='text-5xl font-bold mb-20 text-center'>All Categories</p>
 
