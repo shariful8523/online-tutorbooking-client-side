@@ -16,11 +16,11 @@ import france from '../assets/franch.webp';
 const CategoryCard = () => {
 
     return (
-        <div className='mt-40 w-11/12 mx-auto'>
+        <div className='mt-40  md:w-11/12 mx-auto '>
 
             <p className='text-5xl font-bold mb-20 text-center'>All Categories</p>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-20">
+            <div className="grid grid-cols-1 sm:grid-cols-2   lg:grid-cols-3 gap-6 mb-20">
 
                 <Card img={England} title="English Tutors" />
                 <Card img={portugal} title="Portuguese Tutors" />
@@ -50,11 +50,11 @@ const Card = ({ img, title }) => {
     return (
         <div 
             onClick={handleClick} 
-            className='flex gap-5 items-center p-5 border border-red-200 hover:shadow-lg transition cursor-pointer'
+            className='flex gap-5 items-center p-5   border border-red-200 hover:shadow-lg transition cursor-pointer'
         >
-            <img className='w-20' src={img} alt={title} />
-            <h1 className='text-2xl font-bold flex-1'>{title}</h1>
-            <span className='text-4xl text-red-400 '> <FaArrowRight /> </span>
+            <img className='lg:w-20 w-10 ' src={img} alt={title} />
+            <h1 className=' lg:text-2xl text-xl font-bold flex-1'>{title}</h1>
+            <span className=' lg:text-4xl text-red-400 '> <FaArrowRight /> </span>
         </div>
     );
 };

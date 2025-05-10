@@ -16,7 +16,7 @@ import CountUp from 'react-countup';
 const Banner = () => {
     return (
         <div className="lg:h-[900px] w-full bg-cover bg-center relative lg:p-45 py-10 lg:-mt-10"
-            style={{ backgroundImage: `url(${BgImage})` }}>
+            style={{ backgroundImage: `url(${BgImage})` }} >
 
             {/* Content wrapper */}
             <div className="w-10/12 mx-auto flex flex-col lg:flex-row items-center justify-center lg:justify-between h-full">

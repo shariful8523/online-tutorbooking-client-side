@@ -12,18 +12,18 @@ const ViewCategory = () => {
     }, [language]);
 
     return (
-        <div className='w-8/12 mx-auto mt-20 mb-20'>
+        <div className='w-11/12 sm:w-10/12 md:w-8/12 mx-auto mt-20 mb-20'>
             <h2 className='text-4xl font-bold mb-10 text-center'>All {language} Tutors</h2>
 
             {
                 tutors.length > 0 ? (
-                    <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6'>
+                    <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6'>
                         {
                             tutors.map(tutor => {
                                 const { _id, image, userName, description, review, price, language } = tutor;
 
                                 return (
-                                    <div key={_id} className="w-80 bg-white rounded-2xl shadow-md hover:shadow-lg transition duration-300 p-3">
+                                    <div key={_id} className="w-full sm:w-80 bg-white rounded-2xl shadow-md hover:shadow-lg transition duration-300 p-3">
 
                                         <div className="bg-gray-100 rounded-xl p-2 relative">
                                             <img
@@ -57,13 +57,11 @@ const ViewCategory = () => {
                                                     <h1 className="font-semibold text-indigo-600">Price: ${price}</h1>
                                                 </div>
                                             </div>
-                                                
+                                                 
                                             <Link
-                                            
-                                             className="border-2 p-5  border-indigo-500 text-indigo-500 font-semibold py-2 rounded-full hover:bg-indigo-500 hover:text-white transition" 
-                                            to={`/viewDetails/${_id}`}
-                                             
-                                           > 
+                                                className="border-2 p-5  border-indigo-500 text-indigo-500 font-semibold py-2 rounded-full hover:bg-indigo-500 hover:text-white transition" 
+                                                to={`/viewDetails/${_id}`}
+                                            > 
                                                 Details
                                             </Link>
                                         </div>

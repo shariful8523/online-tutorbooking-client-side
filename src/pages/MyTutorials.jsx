@@ -10,7 +10,6 @@ const MyTutorials = () => {
     const [loading, setLoading] = useState(true);
     const [tutorials, setTutorials] = useState([]);
 
-    // Fetch tutorials
     useEffect(() => {
         if (user?.email) {
             setLoading(true);
@@ -29,7 +28,6 @@ const MyTutorials = () => {
         }
     }, [user]);
 
-    // Delete tutorial
     const handleDelete = (id) => {
         Swal.fire({
             title: 'Are you sure?',
@@ -57,10 +55,9 @@ const MyTutorials = () => {
         });
     };
 
-
     if (loading) {
         return (
-             <div className="flex justify-center items-center ">
+            <div className="flex justify-center items-center min-h-screen">
                 <span className="loading loading-spinner text-error w-[50px]"></span>
             </div>
         );
@@ -72,13 +69,13 @@ const MyTutorials = () => {
             style={{ backgroundImage: `url(${BgImage2})` }}
         >
             {tutorials.length > 0 ? (
-                <div className="w-8/12 mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-20">
+                <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-20">
                     {tutorials.map((tut) => {
                         const { _id, image, userName, description, review = 0, price, language } = tut;
                         return (
                             <div
                                 key={_id}
-                                className="w-80 bg-white rounded-2xl shadow-md hover:shadow-lg transition duration-300 p-4"
+                                className="bg-white rounded-2xl shadow-md hover:shadow-lg transition duration-300 p-4 flex flex-col"
                             >
                                 <div className="bg-gray-100 rounded-xl p-2">
                                     <img
@@ -88,10 +85,10 @@ const MyTutorials = () => {
                                     />
                                 </div>
 
-                                <div className="mt-4 space-y-2">
+                                <div className="mt-4 space-y-2 flex-1 flex flex-col">
                                     <h4 className="font-semibold text-lg">{userName}</h4>
                                     <h3 className="font-semibold text-indigo-600 text-lg">{language}</h3>
-                                    <p className="text-gray-700 text-sm">{description}</p>
+                                    <p className="text-gray-700 text-sm">{description?.slice(0, 60) || 'Tutorial'}...</p>
 
                                     <div className="flex items-center gap-1 text-base">
                                         {'⭐'.repeat(Math.floor(review))}{' '}
@@ -101,13 +98,10 @@ const MyTutorials = () => {
                                         </div>
                                     </div>
 
-                                    <div className="flex gap-2">
-                                        
-                                            <Link to={`/update/${_id}`} className=" w-full text-center border-2 border-indigo-500 text-indigo-500 font-semibold py-2 rounded-full hover:bg-indigo-500 hover:text-white transition">
-                                                Update
-                                            </Link>
-
-                                        
+                                    <div className="flex gap-2 mt-auto">
+                                        <Link to={`/update/${_id}`} className="w-full text-center border-2 border-indigo-500 text-indigo-500 font-semibold py-2 rounded-full hover:bg-indigo-500 hover:text-white transition">
+                                            Update
+                                        </Link>
                                         <button
                                             onClick={() => handleDelete(_id)}
                                             className="w-full border-2 border-green-500 text-green-500 font-semibold py-2 rounded-full hover:bg-green-500 hover:text-white transition"

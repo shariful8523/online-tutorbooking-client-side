@@ -12,21 +12,19 @@ const FindTutors = () => {
       .then(data => setView(data))
   }, []);
 
- 
   const filteredTutors = view.filter(tutor =>
     tutor.language.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   return (
-    <div>
-     
+    <div className="px-4"> 
+      
+      
       <div className="flex justify-center mt-10 mb-10">
         <div className="relative w-full max-w-md">
-         
           <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-gray-400">
             <FaSearch />
           </div>
-        
           <input
             type="text"
             placeholder="Search by language..."
@@ -37,18 +35,17 @@ const FindTutors = () => {
         </div>
       </div>
 
-    
-      <div className='w-7/12 mx-auto mt-20 mb-20'>
+      
+      <div className='max-w-7xl mx-auto mt-10 mb-20'>
         {
           filteredTutors.length > 0 ? (
-            <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6'>
+            <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6'>
               {
                 filteredTutors.map(tutor => {
                   const { _id, image, userName, description, review, price, language } = tutor;
 
                   return (
-                    <div key={_id} className="w-80 bg-white rounded-2xl shadow-md hover:shadow-lg transition duration-300 p-3">
-
+                    <div key={_id} className="w-full bg-white rounded-2xl shadow-md hover:shadow-lg transition duration-300 p-3">
                       <div className="bg-gray-100 rounded-xl p-2 relative">
                         <img
                           src={image}

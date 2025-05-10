@@ -1,6 +1,8 @@
 import AllTutors from "../AllTutors";
 import Banner from "../Banner";
 import CategoryCard from "../CategoryCard";
+import FeaturedInstructor from "../FeaturedInstructor";
+import Mentor from "../Mentor";
 
 
 const Home = () => {
@@ -13,7 +15,10 @@ const Home = () => {
             </section>
 
             <section className=" w-7/12 mx-auto justify-center ">
-                
+                <FeaturedInstructor></FeaturedInstructor>
+            </section>
+            <section className="  ">
+                <Mentor></Mentor>
             </section>
 
         </div>

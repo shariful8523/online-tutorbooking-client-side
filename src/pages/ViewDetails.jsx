@@ -3,7 +3,6 @@ import { useLoaderData } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import AuthContext from '../Providers/AuthContext';
 
-
 const ViewDetails = () => {
 
     const { user, loading } = useContext(AuthContext);
@@ -54,35 +53,28 @@ const ViewDetails = () => {
     }
 
     return (
+        <div className='w-full sm:w-10/12 md:w-7/12 mx-auto justify-center mt-20 mb-20'>
+            <div className='flex flex-col sm:flex-row gap-8 border border-amber-50 bg-base-300 p-5 rounded-xl'>
 
-        <div className='w-7/12 mx-auto justify-center mt-20 mb-20'>
-            <div className='  flex border  border-amber-50 bg-base-300 ' >
-
-                <div>
-                    <img className='w-[500px]' src={image} alt="" />
+                <div className='sm:w-1/2'>
+                    <img className='w-full max-w-full h-auto object-cover rounded-lg' src={image} alt="" />
                 </div>
 
+                <div className='sm:w-1/2 text-xl space-y-4'>
+                    <h1 className='font-bold text-2xl'>Name: {userName}</h1>
+                    <p className='font-bold text-lg'>Language: {language}</p>
+                    <p className='text-gray-700'>{description}</p>
 
-                <div className='p-10 text-2xl  '>
-                    <h1 className='font-bold'>Name: {userName}</h1>
-                    <p className='mt-3 font-bold'>Language: {language}</p>
-
-                    <p className='mt-3'>Description: {description}</p>
-
-
-                    <section className=' flex gap-14 mt-20'>
-                        <h1>Price: $ {price}</h1>
-                        <h1>Review: {review}</h1>
+                    <section className='flex gap-14 mt-5'>
+                        <h1 className='text-lg font-semibold'>Price: $ {price}</h1>
+                        <h1 className='text-lg font-semibold'>Review: {review}</h1>
                     </section>
 
-                    <button onClick={handleBook} className="btn btn-outline btn-primary mt-5">Book</button>
+                    <button onClick={handleBook} className="btn btn-outline btn-primary mt-5 w-full sm:w-auto">Book</button>
 
                 </div>
             </div>
         </div>
-
-
-
     );
 };
 
