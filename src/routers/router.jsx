@@ -32,30 +32,30 @@ const router = createBrowserRouter([
       },
       {
         path: "/Tutors/:language",
-        element: <PrivateRouter> <ViewCategory></ViewCategory> </PrivateRouter>  ,
+        element: <PrivateRouter> <ViewCategory></ViewCategory> </PrivateRouter>,
       },
 
       {
         path: "/viewDetails/:id",
-        element: <PrivateRouter><ViewDetails></ViewDetails></PrivateRouter>  ,
+        element: <PrivateRouter><ViewDetails></ViewDetails></PrivateRouter>,
         loader: ({ params }) => fetch(`http://localhost:5000/tutor/${params.id}`)
       },
 
       {
         path: "/findTutors",
-        element: <PrivateRouter><FindTutors></FindTutors></PrivateRouter>  ,
+        element: <PrivateRouter><FindTutors></FindTutors></PrivateRouter>,
       },
       {
         path: "/myTutorials",
-        element: <PrivateRouter> <MyTutorials></MyTutorials> </PrivateRouter> ,
+        element: <PrivateRouter> <MyTutorials></MyTutorials> </PrivateRouter>,
       },
       {
         path: "/bookedTutors",
-        element: <MyBookedTutorial></MyBookedTutorial> ,
+        element: <PrivateRouter><MyBookedTutorial></MyBookedTutorial></PrivateRouter>,
       },
       {
         path: "/update/:id",
-        element: <PrivateRouter><UpdateTutorials></UpdateTutorials></PrivateRouter> ,
+        element: <PrivateRouter><UpdateTutorials></UpdateTutorials></PrivateRouter>,
         loader: ({ params }) => fetch(`http://localhost:5000/tutor/${params.id}`)
 
       },
