@@ -2,6 +2,7 @@ import { NavLink } from "react-router-dom";
 import logo from '../assets/logoss.svg'
 import { useContext } from "react";
 import AuthContext from "../Providers/AuthContext";
+import Swal from "sweetalert2";
 
 
 const Navbar = () => {
@@ -13,19 +14,60 @@ const Navbar = () => {
         LogOut()
             .then(() => {
 
+                Swal.fire({
+                    title: 'Success!',
+                    text: 'LogOut Successfully',
+                    icon: 'success',
+                    confirmButtonText: 'Cool'
+                });
             })
-            .catch(() => {
+            .catch((error) => {
 
+                Swal.fire({
+                    title: 'Error!',
+                    text: error.message,
+                    icon: 'error',
+                    confirmButtonText: 'Okay'
+                });
             })
     }
 
     const link = <>
-        <li> <NavLink to="/"> Home </NavLink> </li>
-        <li> <NavLink to="/findTutors"> Find tutors</NavLink> </li>
-        <li> <NavLink to="/addTutorials"> Add Tutorials</NavLink> </li>
-        <li> <NavLink to="/myTutorials"> My Tutorials</NavLink> </li>
-        <li> <NavLink to="/bookedTutors"> My booked tutors</NavLink> </li>
+        <li>
+            <NavLink to="/" className={({ isActive }) => isActive ? "text-blue-500 font-bold" : "text-black"}>
+                Home
+            </NavLink>
+        </li>
+
+
+        {
+            user &&
+            <>
+
+                <li>
+                    <NavLink to="/findTutors" className={({ isActive }) => isActive ? "text-blue-500 font-bold" : "text-black"}>
+                        Find tutors
+                    </NavLink>
+                </li>
+                <li>
+                    <NavLink to="/addTutorials" className={({ isActive }) => isActive ? "text-blue-500 font-bold" : "text-black"}>
+                        Add Tutorials
+                    </NavLink>
+                </li>
+                <li>
+                    <NavLink to="/myTutorials" className={({ isActive }) => isActive ? "text-blue-500 font-bold" : "text-black"}>
+                        My Tutorials
+                    </NavLink>
+                </li>
+                <li>
+                    <NavLink to="/bookedTutors" className={({ isActive }) => isActive ? "text-blue-500 font-bold" : "text-black"}>
+                        My booked tutors
+                    </NavLink>
+                </li>
+            </>
+        }
     </>
+
 
     return (
         <div className="  w-full bg-base-200 sticky top-0 z-50 shadow-sm">
