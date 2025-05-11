@@ -2,13 +2,13 @@ import React, { useContext } from 'react';
 import { FcGoogle } from 'react-icons/fc';
 import { Link, useNavigate } from 'react-router-dom';
 import AuthContext from '../Providers/AuthContext';
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import Swal from 'sweetalert2';
+
 
 
 const Login = () => {
-      const navigate = useNavigate();
-    
+    const navigate = useNavigate();
+
 
     const { logInUser, GoogleLogin } = useContext(AuthContext);
 
@@ -16,44 +16,63 @@ const Login = () => {
         event.preventDefault();
         const email = event.target.email.value;
         const password = event.target.password.value;
-    
+
         console.log(email, password);
-    
+
         logInUser(email, password)
             .then((result) => {
                 console.log(result);
-            
-                toast.success("Login Successful ", {
-                    position: "top-center",
-                    autoClose: 3000,
-                    pauseOnHover: true
-                });
-                
 
-               
-                     navigate('/')
-                
-               
+                Swal.fire({
+                    title: 'Success!',
+                    text: 'login Successfully',
+                    icon: 'success',
+                    confirmButtonText: 'Cool'
+                });
+
+
+
+
+                navigate('/')
+
+
             })
             .catch((error) => {
-                console.log(error.message); 
-                toast.error("Login Failed!", {
-                    position: "top-center"
+                Swal.fire({
+                    title: 'Error!',
+                    text: error.message,
+                    icon: 'error',
+                    confirmButtonText: 'Okay'
                 });
+
             });
     }
 
-    const handelGoogle =() =>{
-       
+    const handelGoogle = () => {
+
         GoogleLogin()
-        .then((result)=>{
-           console.log(result)
-        })
-        .catch((error )=>{
+            .then((result) => {
+                console.log(result)
+                Swal.fire({
+                    title: 'Success!',
+                    text: 'Registration Successfully',
+                    icon: 'success',
+                    confirmButtonText: 'Cool'
+                });
+
+                  navigate('/')
+            })
+            .catch((error) => {
                 console.log(error)
-        })
+                Swal.fire({
+                    title: 'Error!',
+                    text: error.message,
+                    icon: 'error',
+                    confirmButtonText: 'Okay'
+                });
+            })
     }
-    
+
     return (
         <div className="flex justify-center items-center min-h-screen bg-gray-100 px-4 lg:-mt-40">
             <form onSubmit={handellogin} className="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
@@ -88,7 +107,7 @@ const Login = () => {
                     </Link>
                 </p>
             </form>
-            <ToastContainer />
+
         </div>
     );
 };
