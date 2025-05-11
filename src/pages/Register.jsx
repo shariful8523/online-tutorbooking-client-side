@@ -1,16 +1,20 @@
 import { useContext } from "react";
 import { FcGoogle } from "react-icons/fc";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import AuthContext from "../Providers/AuthContext";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
+import Swal from "sweetalert2";
+import { updateProfile } from "firebase/auth";
+import auth from "../Firebase/Firebase.init";
+ 
 const Register = () => {
 
-    const { CreateUser } = useContext(AuthContext);
+    const { CreateUser , LogOut } = useContext(AuthContext);
+
+    const navigate = useNavigate();
 
     const handelRegister = (event) => {
-
         event.preventDefault();
 
         const name = event.target.name.value;
@@ -18,25 +22,55 @@ const Register = () => {
         const email = event.target.email.value;
         const password = event.target.password.value;
 
-        console.log(name, photo, email, password)
+        // Password validation
+        if (password.length < 6) {
+            return toast.error("Password must be at least 6 characters long!");
+        }
 
         CreateUser(email, password)
-            .then((result) => {
-                console.log(result)
-                toast.success("Register Successful ", {
-                    position: "top-center"
-                });
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+
+                // Update user profile with name and photo
+                updateProfile(user, {
+                    displayName: name,
+                    photoURL: photo
+                })
+                    .then(() => {
+                        Swal.fire({
+                            title: 'Success!',
+                            text: 'Registration Successfully',
+                            icon: 'success',
+                            confirmButtonText: 'Cool'
+                        });
+
+
+                        LogOut(auth)
+                        .then(() => {
+                            
+                        })
+ 
+
+                        event.target.reset(); // Reset form
+
+                        navigate('/login')
+                    })
+                    .catch(error => {
+                        console.error(error);
+                        toast.error("Profile update failed!");
+                    });
             })
             .catch((error) => {
-                console.log(error.message)
-                toast.error("Register Failed!", {
-                    position: "top-center"
+                console.error(error);
+                Swal.fire({
+                    title: 'Error!',
+                    text: error.message,
+                    icon: 'error',
+                    confirmButtonText: 'Okay'
                 });
-            })
-
-
+            });
     }
-
 
     return (
         <div className="flex justify-center items-center min-h-screen bg-gray-100 px-4">
@@ -94,7 +128,7 @@ const Register = () => {
                         placeholder="Enter your password"
                     />
                     <p className="text-xs text-gray-500 mt-1">
-                        * Password must contain at least 6 characters, including uppercase and lowercase letters.
+                        * Password must be at least 6 characters long.
                     </p>
                 </div>
 
@@ -130,7 +164,6 @@ const Register = () => {
                 </p>
             </form>
             <ToastContainer />
-
         </div>
     );
 };
