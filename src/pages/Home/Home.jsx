@@ -1,3 +1,4 @@
+import Blog from "../../Components/Blog";
 import AllTutors from "../AllTutors";
 import Banner from "../Banner";
 import CategoryCard from "../CategoryCard";
@@ -17,9 +18,12 @@ const Home = () => {
             <section className="  ">
                 <Mentor></Mentor>
             </section>
-
             <section >
               <Trust></Trust>
+            </section>
+
+            <section className="w-10/12 mx-auto justify-center">
+                <Blog></Blog>
             </section>
             
 
