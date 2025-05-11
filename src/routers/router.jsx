@@ -14,6 +14,7 @@ import MyBookedTutorial from "../pages/MyBookedTutorial";
 import UpdateTutorials from "../pages/UpdateTutorials";
 import PrivateRouter from "../LayOuts/PrivateRouter";
 import Error from "../pages/Error";
+import About from "../Components/About";
 
 
 const router = createBrowserRouter([
@@ -70,6 +71,10 @@ const router = createBrowserRouter([
         path: "/register",
         element: <Register></Register>,
       },
+      {
+        path: "/about",
+        element: <About></About>,
+      }
     ]
   },
 ]);
