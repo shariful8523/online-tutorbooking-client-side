@@ -1,2 +1,13 @@
 @import "tailwindcss";
 @plugin "daisyui";
+
+
+@layer utilities {
+  @keyframes slide-rtl {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  .animate-slide-rtl {
+    animation: slide-rtl 20s linear infinite;
+  }
+}

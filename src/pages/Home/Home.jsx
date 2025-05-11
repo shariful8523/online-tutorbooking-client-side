@@ -3,6 +3,7 @@ import Banner from "../Banner";
 import CategoryCard from "../CategoryCard";
 import FeaturedInstructor from "../FeaturedInstructor";
 import Mentor from "../Mentor";
+import Trust from "../Trust";
 
 
 const Home = () => {
@@ -13,13 +14,14 @@ const Home = () => {
             <section className=" w-7/12 mx-auto justify-center">
                 <CategoryCard></CategoryCard>
             </section>
-
-            <section className=" w-7/12 mx-auto justify-center ">
-                <FeaturedInstructor></FeaturedInstructor>
-            </section>
             <section className="  ">
                 <Mentor></Mentor>
             </section>
+
+            <section >
+              <Trust></Trust>
+            </section>
+            
 
         </div>
     );
