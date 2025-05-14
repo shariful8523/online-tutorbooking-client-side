@@ -38,11 +38,7 @@ const Navbar = () => {
                 Home
             </NavLink>
         </li>
-        <li>
-            <NavLink to="/about" className={({ isActive }) => isActive ? "text-blue-500 font-bold" : "text-black"}>
-                About
-            </NavLink>
-        </li>
+
 
 
         {
@@ -71,6 +67,13 @@ const Navbar = () => {
                 </li>
             </>
         }
+
+
+        <li>
+            <NavLink to="/about" className={({ isActive }) => isActive ? "text-blue-500 font-bold" : "text-black"}>
+                About
+            </NavLink>
+        </li>
     </>
 
 
@@ -110,15 +113,13 @@ const Navbar = () => {
 
                                 <div className="dropdown hidden md:block">
                                     <div tabIndex={0}  >
-                                        <img className='md:w-12 w-8  rounded-full' referrerPolicy='no-referrer' src={user.photoURL} alt="" />
+                                        <img className='md:w-12 w-8 lg:w-13 lg:h-13 rounded-full' referrerPolicy='no-referrer' src={user.photoURL} alt="" />
                                     </div>
                                     <ul tabIndex={0} className="dropdown-content menu bg-green-500 rounded-box z-[1] w-24 md:w-48 mt-1  p-2 shadow">
                                         <li className='md:p-2 text-white md:text-xl md:font-medium'>{user.displayName}</li>
                                     </ul>
                                 </div>
-                                {/* User Name */}
-                                {/* <span className=" hidden  md:block  lg:block  font-semibold text-gray-700">{user.displayName || 'User'}</span> */}
-                                {/* Logout button */}
+                              
                                 <button onClick={handelLogOut} className="btn btn-sm btn-error">Logout</button>
                             </div>)
 

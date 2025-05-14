@@ -3,6 +3,7 @@ import AuthContext from './AuthContext'
 import auth from '../Firebase/Firebase.init'
 import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword,signOut, signInWithPopup } from 'firebase/auth';
 import { GoogleAuthProvider } from 'firebase/auth';
+import axios from 'axios';
 
 
 
@@ -36,7 +37,32 @@ const AuthProviders = ({ children }) => {
        useEffect(() => {
           const unSubscribe = onAuthStateChanged(auth, currentUser => {
             setUser(currentUser);
-            setLoading(false);
+
+            if( currentUser?.email) {
+                const user = {email: currentUser.email};
+
+                axios.post('http://localhost:5000/jwt', user, {withCredentials: true})
+            .then(res => {
+                console.log(res.data);
+                setLoading(false);
+            })
+            }
+            else {
+                axios.post('http://localhost:5000/logout', {}, {
+                    withCredentials: true
+                })
+                .then(res => {
+                    console.log('logout', res.data);
+                    setLoading(false);
+                })
+            }
+
+
+
+
+
+
+            
           });
 
           return () => unSubscribe();
